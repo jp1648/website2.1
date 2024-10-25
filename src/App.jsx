@@ -1,13 +1,7 @@
 import { useState, useEffect, useRef, useMemo, createRef } from "react";
 import "./App.css";
 import { ReactTyped } from "react-typed";
-import {
-  Container,
-  Typography,
-  Box,
-  Button,
-  useMediaQuery,
-} from "@mui/material";
+import { Container, Typography, Box, Button, TextField } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { delay, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -103,8 +97,6 @@ function App() {
     extendedAboutMeP: false,
     emailForm: false,
   });
-
-  const isMobile = useMediaQuery("(max-width: 600px)"); // Determine if the device is mobile
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -213,9 +205,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <CursorifyProvider cursor={isMobile ? null : <CustomCursor />}>
-        {" "}
-        {/* Remove cursor on mobile */}
+      <CursorifyProvider cursor={<CustomCursor />}>
         <Box
           component="header"
           className="App-header"
@@ -254,10 +244,9 @@ function App() {
               display: "flex",
               flexDirection: { xs: "column", md: "row" },
               alignItems: "center",
-              justifyContent: "center", // Center content
+              justifyContent: "space-between",
               marginTop: "150px",
               marginLeft: "20px",
-              textAlign: { xs: "center", md: "left" }, // Center text on mobile
             }}
           >
             <Box
@@ -395,10 +384,9 @@ function App() {
               className="tech-stack-icons"
               sx={{
                 marginTop: "50px",
-                marginBottom: "50px",
+                marginbottom: "50px",
                 textAlign: "center",
                 overflow: "visible",
-                padding: { xs: "0 10px", md: "0" }, // Add padding on mobile to prevent text cutoff
               }}
             >
               <motion.div
@@ -519,13 +507,10 @@ function App() {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                height: "auto", // Adjust height to auto
-                padding: { xs: "0 10px", md: "0" }, // Add padding on mobile
+                height: "600px",
               }}
             >
-              <Box sx={{ height: "auto", maxWidth: "80%" }}>
-                {" "}
-                {/* Adjust height to auto */}
+              <Box sx={{ height: "80px", maxWidth: "80%" }}>
                 <motion.p
                   ref={experienceDescRef}
                   initial="hidden"
@@ -562,7 +547,6 @@ function App() {
                   justifyContent: "space-evenly",
                   marginTop: "20px",
                   width: "75%",
-                  marginBottom: "20px", // Add margin to separate buttons from description
                 }}
                 className="tabs"
               >
@@ -691,14 +675,12 @@ function App() {
                 </motion.p>
               </Box>
             </Box>
-
             <Box
               className="extended-about"
               sx={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                marginTop: "100px",
               }}
             >
               <Box className="extended-about-me-text-header" sx={{}}>
@@ -781,7 +763,55 @@ function App() {
                 setHasAnimated((prev) => ({ ...prev, emailForm: true }))
               }
             >
-              <ContactForm formRef={formRef}></ContactForm>
+              <ContactForm formRef={formRef}>
+                <TextField
+                  variant="outlined"
+                  label="Your Name"
+                  fullWidth
+                  margin="normal"
+                  InputProps={{
+                    style: {
+                      backgroundColor: "gray", // Background color
+                      color: "white", // Text color
+                    },
+                  }}
+                  InputLabelProps={{
+                    style: { color: "#888" }, // Label color
+                  }}
+                />
+                <TextField
+                  variant="outlined"
+                  label="Your Email"
+                  fullWidth
+                  margin="normal"
+                  InputProps={{
+                    style: {
+                      backgroundColor: "gray",
+                      color: "white",
+                    },
+                  }}
+                  InputLabelProps={{
+                    style: { color: "#888" },
+                  }}
+                />
+                <TextField
+                  variant="outlined"
+                  label="Your Message"
+                  fullWidth
+                  margin="normal"
+                  multiline
+                  rows={4}
+                  InputProps={{
+                    style: {
+                      backgroundColor: "gray",
+                      color: "white",
+                    },
+                  }}
+                  InputLabelProps={{
+                    style: { color: "#888" },
+                  }}
+                />
+              </ContactForm>
             </motion.form>
           </Box>
         </Box>
