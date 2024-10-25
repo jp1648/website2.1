@@ -3,7 +3,7 @@ import "./App.css";
 import { ReactTyped } from "react-typed";
 import { Container, Typography, Box, Button } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { motion } from "framer-motion";
+import { delay, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { CursorifyProvider } from "@cursorify/react";
 import CustomCursor from "./components/cursor.jsx";
@@ -81,6 +81,23 @@ function App() {
   const [buttonsVisible, setButtonsVisible] = useState(false);
   const [expDescVisible, setExpDescVisible] = useState(false);
 
+  const [allVisible, setAllVisible] = useState(false);
+
+  const [hasAnimated, setHasAnimated] = useState({
+    header: false,
+    aboutMeText: false,
+    aboutMeImage: false,
+    techStackTitle: false,
+    techIcons: false,
+    projectTitle: false,
+    experienceTitle: false,
+    expButtons: false,
+    expDesc: false,
+    extendedAboutMe: false,
+    extendedAboutMeP: false,
+    emailForm: false,
+  });
+
   useEffect(() => {
     const fetchProjects = async () => {
       const data = await getGitDetails();
@@ -157,7 +174,7 @@ function App() {
   });
   const [expDesc, expDescInView] = useInView({
     triggerOnce: true,
-    threshold: 1.0,
+    threshold: 0.5,
   });
   const [extendedAboutMe, extendedAboutMeInView] = useInView({
     triggerOnce: true,
@@ -166,12 +183,22 @@ function App() {
 
   const [extendedAboutMeP, extendedAboutMePInView] = useInView({
     triggerOnce: true,
-    threshold: 0.5,
+    threshold: 1.0,
+  });
+
+  const [experienceDescRef, experienceDescInView] = useInView({
+    triggerOnce: true,
+    threshold: 1.0,
   });
 
   const [emailForm, emailFormInView] = useInView({
     triggerOnce: true,
     threshold: 0.5,
+    onChange: (inView) => {
+      if (inView) {
+        setAllVisible(true);
+      }
+    },
   });
 
   const [startTyping, setStartTyping] = useState(false);
@@ -188,9 +215,12 @@ function App() {
         >
           <motion.header
             initial="hidden"
-            animate="visible"
+            animate={hasAnimated.header ? "visible" : "visible"}
             variants={floatUpVariants}
             transition={{ duration: 1 }}
+            onAnimationComplete={() =>
+              setHasAnimated((prev) => ({ ...prev, header: true }))
+            }
           >
             <Typography
               variant="h1"
@@ -217,7 +247,7 @@ function App() {
               flexDirection: { xs: "column", md: "row" },
               alignItems: "center",
               justifyContent: "space-between",
-              marginTop: "100px",
+              marginTop: "150px",
               marginLeft: "20px",
             }}
           >
@@ -232,9 +262,12 @@ function App() {
             >
               <motion.h2
                 initial="hidden"
-                animate="visible"
+                animate={hasAnimated.aboutMeText ? "visible" : "visible"}
                 variants={floatUpVariants}
                 transition={{ duration: 1, delay: 1 }}
+                onAnimationComplete={() =>
+                  setHasAnimated((prev) => ({ ...prev, aboutMeText: true }))
+                }
               >
                 <Typography variant="h2" className="subheader">
                   Driven Problem Solver
@@ -266,7 +299,7 @@ function App() {
               <Box sx={{ marginTop: "20px" }} className="view-work-button">
                 <motion.button
                   initial="hidden"
-                  animate="visible"
+                  animate={allVisible || "visible"}
                   variants={floatUpVariants}
                   transition={{ duration: 1, delay: 2 }}
                 >
@@ -313,9 +346,12 @@ function App() {
             >
               <motion.img
                 initial="hidden"
-                animate="visible"
+                animate={hasAnimated.aboutMeImage ? "visible" : "visible"}
                 variants={floatInFromRightVariants}
                 transition={{ duration: 1, delay: 1 }}
+                onAnimationComplete={() =>
+                  setHasAnimated((prev) => ({ ...prev, aboutMeImage: true }))
+                }
                 src={profilePic}
                 style={{
                   width: "100%",
@@ -337,6 +373,9 @@ function App() {
               animate={techStackTitleInView ? "visible" : "hidden"}
               variants={floatUpVariants}
               transition={{ duration: 1 }}
+              onAnimationComplete={() =>
+                setHasAnimated((prev) => ({ ...prev, techStackTitle: true }))
+              }
             >
               <Typography variant="h2" className="subheader">
                 Tech Stack
@@ -358,6 +397,9 @@ function App() {
                 animate={techIconsInView ? "visible" : "hidden"}
                 variants={floatUpVariants}
                 transition={{ duration: 1, delay: 0.3 }}
+                onAnimationComplete={() =>
+                  setHasAnimated((prev) => ({ ...prev, techIcons: true }))
+                }
               >
                 <TechnologyGrid />
               </motion.div>
@@ -367,7 +409,7 @@ function App() {
             component="section"
             id="projects"
             className="projects"
-            sx={{ marginTop: "250px", textAlign: "center" }}
+            sx={{ marginTop: "300px", textAlign: "center" }} // Increased marginTop to move it down
           >
             <motion.h2
               ref={projectTitleRef}
@@ -375,6 +417,9 @@ function App() {
               animate={projectTitleInView ? "visible" : "hidden"}
               variants={floatUpVariants}
               transition={{ duration: 1 }}
+              onAnimationComplete={() =>
+                setHasAnimated((prev) => ({ ...prev, projectTitle: true }))
+              }
             >
               <Typography variant="h2" className="subheader">
                 My Projects
@@ -406,6 +451,12 @@ function App() {
                         : floatInFromLeftVariants
                     }
                     transition={{ duration: 1, delay: index * 0.2 }}
+                    onAnimationComplete={() =>
+                      setHasAnimated((prev) => ({
+                        ...prev,
+                        projectTitle: true,
+                      }))
+                    }
                   >
                     <Box sx={{ marginBottom: "50px" }}>
                       <CustomComponent
@@ -425,7 +476,7 @@ function App() {
             id="experience"
             className="experience-section"
             sx={{
-              marginTop: "100px",
+              marginTop: "300px",
               textAlign: "center",
             }}
           >
@@ -440,10 +491,10 @@ function App() {
                 initial="hidden"
                 animate={experienceTitleInView ? "visible" : "hidden"}
                 variants={floatUpVariants}
-                transition={{ duration: 1 }}
-                onAnimationComplete={() => {
-                  setStartTyping(true);
-                }}
+                transition={{ duration: 1, delay: 0.5 }} // Add delay for the title
+                onAnimationComplete={() =>
+                  setHasAnimated((prev) => ({ ...prev, experienceTitle: true }))
+                }
               >
                 <Typography variant="h2" className="subheader">
                   My Experience
@@ -462,160 +513,169 @@ function App() {
               }}
             >
               <Box sx={{ height: "80px", maxWidth: "80%" }}>
-                <Typography
-                  variant="p"
-                  className="desc-subheader-text"
-                  sx={{
-                    whiteSpace: "normal",
-                  }}
+                <motion.p
+                  ref={experienceDescRef}
+                  initial="hidden"
+                  animate={experienceDescInView ? "visible" : "hidden"}
+                  variants={floatUpVariants}
+                  transition={{ duration: 1, delay: 1.0 }} // Ensure this delay is before buttons
+                  onAnimationComplete={() =>
+                    setHasAnimated((prev) => ({
+                      ...prev,
+                      experienceDesc: true,
+                    }))
+                  }
                 >
-                  {startTyping && (
-                    <ReactTyped
-                      strings={[
-                        "I’m always diving into tech, soaking up everything from full-stack development to machine learning, data science, and product. Tech is my playground, and I’m stoked to keep making things smarter and better for everyone.",
-                      ]}
-                      typeSpeed={1}
-                      loop={false}
-                      showCursor={false}
-                      onComplete={() => setButtonsVisible(true)}
-                    />
-                  )}
-                </Typography>
+                  <Typography
+                    variant="p"
+                    className="desc-subheader-text"
+                    sx={{
+                      whiteSpace: "normal",
+                    }}
+                  >
+                    I’m always diving into tech, soaking up everything from
+                    full-stack development to machine learning, data science,
+                    and product. Tech is my playground, and I’m stoked to keep
+                    making things smarter and better for everyone.
+                  </Typography>
+                </motion.p>
               </Box>
-              {buttonsVisible && (
-                <Box
-                  component="section"
-                  sx={{
-                    display: "flex",
-                    flexDirection: { xs: "column", sm: "row" },
-                    justifyContent: "space-evenly",
-                    marginTop: "20px",
-                    width: "75%",
-                  }}
-                  className="tabs"
-                >
-                  <motion.button
-                    ref={expButtonsRef}
-                    initial="hidden"
-                    animate={expButtonsRefInView ? "visible" : "hidden"}
-                    variants={floatUpVariants}
-                    transition={{ duration: 1 }}
-                    sx={{}}
-                  >
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      onClick={() =>
-                        setExperienceText(
-                          <ul sx={{ margin: 0, padding: 0, listStyle: "none" }}>
-                            <li>
-                              <span style={{ color: "white" }}>
-                                August 2024 - Current
-                              </span>
-                              <br />
-                              Software Engineer @ Lantern (Series A)
-                            </li>
-                            <br />
-                            <li>
-                              <span style={{ color: "white" }}>
-                                July 2022 - August 2024
-                              </span>
-                              <br />
-                              Software Engineer @ General Motors
-                            </li>
-                            <br />
-                            <li>
-                              <span style={{ color: "white" }}>
-                                July 2023 - December 2023
-                              </span>
-                              <br />
-                              Technical Product Owner @ General Motors
-                            </li>
-                            <br />
-                            <li>
-                              <span style={{ color: "white" }}>
-                                June 2021 - August 2021
-                              </span>
-                              <br />
-                              Data Analytics Intern @ Discover Financial
-                              Services
-                            </li>
-                          </ul>
-                        )
-                      }
-                    >
-                      Work Experience
-                    </Button>
-                  </motion.button>
-                  <motion.button
-                    ref={expButtonsRef}
-                    initial="hidden"
-                    animate={expButtonsRefInView ? "visible" : "hidden"}
-                    variants={floatUpVariants}
-                    transition={{ duration: 1 }}
-                    sx={{}}
-                  >
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      onClick={() =>
-                        setExperienceText(
-                          <ul sx={{ margin: 0, padding: 0, listStyle: "none" }}>
-                            <li>
-                              <span style={{ color: "white" }}>
-                                January 2023 - August 2024
-                              </span>
-                              <br />
-                              Master of Science in Computer Science | Stevens
-                              Institute of Technology
-                            </li>
-                            <br />
-                            <li>
-                              <span style={{ color: "white" }}>
-                                September 2018 - May 2022
-                              </span>
-                              <br />
-                              Business Analytics & Information Technology |
-                              Rutgers University - New Brunswick
-                            </li>
-                            <br />
-                            <li>
-                              <span style={{ color: "white" }}>
-                                September 2018 - May 2022
-                              </span>
-                              <br />
-                              Finance | Rutgers University - New Brunswick
-                            </li>
-                          </ul>
-                        )
-                      }
-                    >
-                      Education History
-                    </Button>
-                  </motion.button>
-                </Box>
-              )}
 
-              {buttonsVisible && (
-                <Box
-                  sx={{
-                    marginTop: "30px",
-                    marginBottom: "150px",
-                  }}
-                  className="experience-p"
+              <Box
+                component="section"
+                sx={{
+                  display: "flex",
+                  flexDirection: { xs: "column", sm: "row" },
+                  justifyContent: "space-evenly",
+                  marginTop: "20px",
+                  width: "75%",
+                }}
+                className="tabs"
+              >
+                <motion.button
+                  ref={expButtonsRef}
+                  initial="hidden"
+                  animate={expButtonsRefInView ? "visible" : "hidden"}
+                  variants={floatUpVariants}
+                  transition={{ duration: 1, delay: 1.0 }} // Delay after description
+                  onAnimationComplete={() =>
+                    setHasAnimated((prev) => ({ ...prev, expButtons: true }))
+                  }
                 >
-                  <motion.p
-                    initial="hidden"
-                    ref={expDesc}
-                    animate={expDescInView ? "visible" : "hidden"}
-                    variants={floatUpVariants}
-                    transition={{ duration: 1, delay: 0.5 }}
-                    onAnimationComplete={() => setExpDescVisible(true)}
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() =>
+                      setExperienceText(
+                        <ul sx={{ margin: 0, padding: 0, listStyle: "none" }}>
+                          <li>
+                            <span style={{ color: "white" }}>
+                              August 2024 - Current
+                            </span>
+                            <br />
+                            Software Engineer @ Lantern (Series A)
+                          </li>
+                          <br />
+                          <li>
+                            <span style={{ color: "white" }}>
+                              July 2022 - August 2024
+                            </span>
+                            <br />
+                            Software Engineer @ General Motors
+                          </li>
+                          <br />
+                          <li>
+                            <span style={{ color: "white" }}>
+                              July 2023 - December 2023
+                            </span>
+                            <br />
+                            Technical Product Owner @ General Motors
+                          </li>
+                          <br />
+                          <li>
+                            <span style={{ color: "white" }}>
+                              June 2021 - August 2021
+                            </span>
+                            <br />
+                            Data Analytics Intern @ Discover Financial Services
+                          </li>
+                        </ul>
+                      )
+                    }
                   >
-                    <Typography component="body">{experienceText}</Typography>
-                  </motion.p>
-                </Box>
-              )}
+                    Work Experience
+                  </Button>
+                </motion.button>
+                <motion.button
+                  ref={expButtonsRef}
+                  initial="hidden"
+                  animate={expButtonsRefInView ? "visible" : "hidden"}
+                  variants={floatUpVariants}
+                  transition={{ duration: 1, delay: 1.0 }}
+                  onAnimationComplete={() =>
+                    setHasAnimated((prev) => ({ ...prev, expButtons: true }))
+                  }
+                >
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() =>
+                      setExperienceText(
+                        <ul sx={{ margin: 0, padding: 0, listStyle: "none" }}>
+                          <li>
+                            <span style={{ color: "white" }}>
+                              January 2023 - August 2024
+                            </span>
+                            <br />
+                            Master of Science in Computer Science | Stevens
+                            Institute of Technology
+                          </li>
+                          <br />
+                          <li>
+                            <span style={{ color: "white" }}>
+                              September 2018 - May 2022
+                            </span>
+                            <br />
+                            Business Analytics & Information Technology |
+                            Rutgers University - New Brunswick
+                          </li>
+                          <br />
+                          <li>
+                            <span style={{ color: "white" }}>
+                              September 2018 - May 2022
+                            </span>
+                            <br />
+                            Finance | Rutgers University - New Brunswick
+                          </li>
+                        </ul>
+                      )
+                    }
+                  >
+                    Education History
+                  </Button>
+                </motion.button>
+              </Box>
+
+              <Box
+                sx={{
+                  marginTop: "30px",
+                  marginBottom: "150px",
+                }}
+                className="experience-p"
+              >
+                <motion.p
+                  initial="hidden"
+                  ref={expDesc}
+                  animate={expDescInView ? "visible" : "hidden"}
+                  variants={floatUpVariants}
+                  transition={{ duration: 1, delay: 0.5 }}
+                  onAnimationComplete={() =>
+                    setHasAnimated((prev) => ({ ...prev, expDesc: true }))
+                  }
+                >
+                  <Typography component="body">{experienceText}</Typography>
+                </motion.p>
+              </Box>
             </Box>
             <Box
               className="extended-about"
@@ -625,75 +685,85 @@ function App() {
                 alignItems: "center",
               }}
             >
-              {buttonsVisible && expDescVisible && (
-                <Box className="extended-about-me-text-header" sx={{}}>
-                  <motion.h2
-                    initial="hidden"
-                    variants={floatUpVariants}
-                    transition={{ duration: 1 }}
-                    ref={extendedAboutMe}
-                    animate={extendedAboutMeInView ? "visible" : "hidden"}
-                    onAnimationComplete={() => setAboutMe(true)}
-                  >
-                    <Typography
-                      sx={{ fontSize: "10px" }}
-                      variant="h2"
-                      className="subheader"
-                    >
-                      About Me
-                    </Typography>
-                  </motion.h2>
-                </Box>
-              )}
-              {aboutMe && (
-                <Box
-                  className="extender-about-me-text"
-                  sx={{
-                    maxWidth: "80%",
-                    display: "flex",
-                  }}
+              <Box className="extended-about-me-text-header" sx={{}}>
+                <motion.h2
+                  initial="hidden"
+                  variants={floatUpVariants}
+                  transition={{ duration: 1 }}
+                  ref={extendedAboutMe}
+                  animate={extendedAboutMeInView ? "visible" : "hidden"}
+                  onAnimationComplete={() =>
+                    setHasAnimated((prev) => ({
+                      ...prev,
+                      extendedAboutMe: true,
+                    }))
+                  }
                 >
-                  <motion.p
-                    initial="hidden"
-                    variants={floatUpVariants}
-                    transition={{ duration: 1 }}
-                    ref={extendedAboutMeP}
-                    animate={extendedAboutMePInView ? "visible" : "hidden"}
+                  <Typography
+                    sx={{ fontSize: "10px" }}
+                    variant="h2"
+                    className="subheader"
                   >
-                    <Typography variant="body1" className="about-ext-subheader">
-                      Hi! As you know by now, my name is Jay Patel and I am a
-                      Software Engineer. Software is my passion and I love to
-                      build projects simply for fun, and I am currently in the
-                      mix of making two major projects. Currently, I work for a
-                      Series A B2B SaaS startup based in New York City called
-                      Lantern, and here I primarily work with TypeScript and
-                      JavaScript for both frontend and backend. While our
-                      frontend is mostly React, our backend is Node.js, and
-                      these are two frameworks that I love to work with. At
-                      Lantern, I primarily deal with engineering client-side
-                      products, sometimes uniquely creating workflows for
-                      individual businesses, and sometimes creating new features
-                      that directly impact the customer. When I am not working
-                      on engineering, some of my favorite hobbies include
-                      weightlifting, watching {alternateColors("Knicks")}{" "}
-                      basketball, playing with my lovely pet Corgi, and spending
-                      time with friends and family. This is actually my second
-                      portfolio website, and it is made entirely with React,
-                      while my first one was just HTML, CSS, and Vanilla
-                      JavaScript. This website's theme is based on a retro space
-                      invaders vibe, and I really hope you like it as much as I
-                      do.
-                    </Typography>
-                  </motion.p>
-                </Box>
-              )}
+                    About Me
+                  </Typography>
+                </motion.h2>
+              </Box>
+
+              <Box
+                className="extender-about-me-text"
+                sx={{
+                  maxWidth: "80%",
+                  display: "flex",
+                }}
+              >
+                <motion.p
+                  initial="hidden"
+                  variants={floatUpVariants}
+                  transition={{ duration: 1 }}
+                  ref={extendedAboutMeP}
+                  animate={extendedAboutMePInView ? "visible" : "hidden"}
+                  onAnimationComplete={() =>
+                    setHasAnimated((prev) => ({
+                      ...prev,
+                      extendedAboutMeP: true,
+                    }))
+                  }
+                >
+                  <Typography variant="body1" className="about-ext-subheader">
+                    Hi! As you know by now, my name is Jay Patel and I am a
+                    Software Engineer. Software is my passion and I love to
+                    build projects simply for fun, and I am currently in the mix
+                    of making two major projects. Currently, I work for a Series
+                    A B2B SaaS startup based in New York City called Lantern,
+                    and here I primarily work with TypeScript and JavaScript for
+                    both frontend and backend. While our frontend is mostly
+                    React, our backend is Node.js, and these are two frameworks
+                    that I love to work with. At Lantern, I primarily deal with
+                    engineering client-side products, sometimes uniquely
+                    creating workflows for individual businesses, and sometimes
+                    creating new features that directly impact the customer.
+                    When I am not working on engineering, some of my favorite
+                    hobbies include weightlifting, watching{" "}
+                    {alternateColors("Knicks")} basketball, playing with my
+                    lovely pet Corgi, and spending time with friends and family.
+                    This is actually my second portfolio website, and it is made
+                    entirely with React, while my first one was just HTML, CSS,
+                    and Vanilla JavaScript. This website's theme is based on a
+                    retro space invaders vibe, and I really hope you like it as
+                    much as I do.
+                  </Typography>
+                </motion.p>
+              </Box>
             </Box>
             <motion.form
               initial="hidden"
               variants={floatUpVariants}
               transition={{ duration: 1 }}
               ref={emailForm}
-              animate={emailFormInView ? "visible" : "hidden"}
+              animate={allVisible || emailFormInView ? "visible" : "hidden"}
+              onAnimationComplete={() =>
+                setHasAnimated((prev) => ({ ...prev, emailForm: true }))
+              }
             >
               <ContactForm formRef={formRef}></ContactForm>
             </motion.form>
