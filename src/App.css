@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+.App {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: "Press Start 2P";
+}
+
+body {
+  color: limegreen;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  background: url("./assets/space_background.jpg") repeat;
+}
+
+.footer {
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  padding: 10px 0;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+html .subheader {
+  font-size: 30px;
+}
