@@ -282,7 +282,7 @@ function App() {
                   initial="hidden"
                   animate={hasAnimated.aboutMeText ? "visible" : "visible"}
                   variants={floatUpVariants}
-                  transition={{ duration: 1, delay: 1 }}
+                  transition={{ duration: 1 }}
                   onAnimationComplete={() =>
                     setHasAnimated((prev) => ({ ...prev, aboutMeText: true }))
                   }
@@ -292,34 +292,37 @@ function App() {
                   </Typography>
                 </motion.h2>
 
-                <Typography
-                  variant="p"
-                  className="subheader-text"
-                  sx={{
-                    display: "block",
-                    whiteSpace: "normal",
-                    maxWidth: "600px",
-                    marginTop: "5px",
-                    height: "25px",
-                  }}
+                <motion.h2
+                  initial="hidden"
+                  animate={hasAnimated.aboutMeText ? "visible" : "visible"}
+                  variants={floatUpVariants}
+                  transition={{ duration: 1 }}
+                  onAnimationComplete={() =>
+                    setHasAnimated((prev) => ({ ...prev, aboutMeText: true }))
+                  }
                 >
-                  <ReactTyped
-                    strings={[
-                      "I am a software engineer who likes to build cool web experiences!",
-                    ]}
-                    typeSpeed={7}
-                    loop={false}
-                    showCursor={false}
-                    startDelay={2000}
-                  />
-                </Typography>
+                  <Typography
+                    variant="p"
+                    className="subheader-text"
+                    sx={{
+                      display: "block",
+                      whiteSpace: "normal",
+                      maxWidth: "600px",
+                      marginTop: "5px",
+                      height: "25px",
+                    }}
+                  >
+                    I am a software engineer who likes to build cool web
+                    experiences!
+                  </Typography>
+                </motion.h2>
 
                 <Box sx={{ marginTop: "20px" }} className="view-work-button">
                   <motion.button
                     initial="hidden"
                     animate={allVisible || "visible"}
                     variants={floatUpVariants}
-                    transition={{ duration: 1, delay: 2 }}
+                    transition={{ duration: 1 }}
                     style={{
                       background: "none",
                       border: "none",
@@ -365,7 +368,7 @@ function App() {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  width: { xs: "100%", md: "30%" },
+                  width: { xs: "30%%", md: "30%", lg: "30%" },
                   marginTop: "50px",
                 }}
               >
@@ -373,7 +376,7 @@ function App() {
                   initial="hidden"
                   animate={hasAnimated.aboutMeImage ? "visible" : "visible"}
                   variants={floatInFromRightVariants}
-                  transition={{ duration: 1, delay: 1 }}
+                  transition={{ duration: 1 }}
                   onAnimationComplete={() =>
                     setHasAnimated((prev) => ({ ...prev, aboutMeImage: true }))
                   }
