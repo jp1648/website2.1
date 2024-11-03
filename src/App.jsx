@@ -183,7 +183,7 @@ function App() {
 
   const [extendedAboutMeP, extendedAboutMePInView] = useInView({
     triggerOnce: true,
-    threshold: 1.0,
+    threshold: 0.8,
   });
 
   const [experienceDescRef, experienceDescInView] = useInView({
@@ -252,9 +252,13 @@ function App() {
             <Box
               className="about-me-text"
               sx={{
-                marginLeft: "20px",
-                marginTop: "150px",
-                height: "200px",
+                width: { xs: "100%", md: "auto" },
+                marginLeft: { xs: 0, md: "20px" },
+                marginTop: { xs: "20px", md: "150px" },
+                height: { xs: "auto", md: "200px" },
+                display: "flex",
+                flexDirection: "column",
+                alignItems: { xs: "center", md: "flex-start" },
                 textAlign: { xs: "center", md: "left" },
               }}
             >
@@ -319,13 +323,7 @@ function App() {
                       boxShadow: "none",
                     }}
                   >
-                    <Typography
-                      variant="h6"
-                      fontSize="15px"
-                      sx={{ fontFamily: "Tahoma", color: "black" }}
-                    >
-                      View My Work
-                    </Typography>
+                    View My Work
                   </Button>
                 </motion.button>
               </Box>
@@ -708,13 +706,18 @@ function App() {
               </Box>
 
               <Box
-                className="extender-about-me-text"
+                className="extended-about-me-text"
                 sx={{
-                  maxWidth: "80%",
+                  maxWidth: { xs: "95%", sm: "90%", md: "80%" },
+                  margin: "0 auto",
+                  padding: "20px",
+                  borderRadius: "8px",
                   display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
               >
-                <motion.p
+                <motion.div
                   initial="hidden"
                   variants={floatUpVariants}
                   transition={{ duration: 1 }}
@@ -726,8 +729,21 @@ function App() {
                       extendedAboutMeP: true,
                     }))
                   }
+                  style={{ width: "100%" }}
                 >
-                  <Typography variant="body1" className="about-ext-subheader">
+                  <Typography
+                    variant="body1"
+                    className="about-ext-subheader"
+                    sx={{
+                      textAlign: "justify",
+                      lineHeight: "1.8",
+                      fontSize: { xs: "14px", sm: "16px" },
+                      padding: "10px",
+                      wordSpacing: "2px",
+                      textJustify: "inter-word",
+                      margin: "0 auto",
+                    }}
+                  >
                     Hi! As you know by now, my name is Jay Patel and I am a
                     Software Engineer. Software is my passion and I love to
                     build projects simply for fun, and I am currently in the mix
@@ -750,7 +766,7 @@ function App() {
                     retro space invaders vibe, and I really hope you like it as
                     much as I do.
                   </Typography>
-                </motion.p>
+                </motion.div>
               </Box>
             </Box>
             <motion.form

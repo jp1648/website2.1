@@ -22,7 +22,6 @@ export const getGitDetails = async (username = "jp1648") => {
     data.map((project) => {
       if (
         project.name !== "jp1648" &&
-        project.name.toLowerCase() !== "stevens" &&
         project.name.toLowerCase() !== "website2"
       ) {
         out.push({

@@ -31,7 +31,7 @@ const CustomCursor = () => {
               alt="Mouse Down"
             />
           );
-        if (style === "pointer") return <img src={pointer} alt="Pointer" />;
+
         return (
           <img
             src={spacePointer}
