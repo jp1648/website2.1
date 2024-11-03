@@ -516,7 +516,7 @@ function App() {
                   initial="hidden"
                   animate={experienceTitleInView ? "visible" : "hidden"}
                   variants={floatUpVariants}
-                  transition={{ duration: 1, delay: 0.5 }} // Add delay for the title
+                  transition={{ duration: 1 }} // Add delay for the title
                   onAnimationComplete={() =>
                     setHasAnimated((prev) => ({
                       ...prev,
@@ -546,7 +546,7 @@ function App() {
                     initial="hidden"
                     animate={experienceDescInView ? "visible" : "hidden"}
                     variants={floatUpVariants}
-                    transition={{ duration: 1, delay: 1.0 }} // Ensure this delay is before buttons
+                    transition={{ duration: 1 }} // Ensure this delay is before buttons
                     onAnimationComplete={() =>
                       setHasAnimated((prev) => ({
                         ...prev,
@@ -590,7 +590,7 @@ function App() {
                       border: "none",
                       padding: 0,
                     }}
-                    transition={{ duration: 1, delay: 1.0 }} // Delay after description
+                    transition={{ duration: 1 }} // Delay after description
                     onAnimationComplete={() =>
                       setHasAnimated((prev) => ({ ...prev, expButtons: true }))
                     }
@@ -660,7 +660,7 @@ function App() {
                       padding: 0,
                     }}
                     variants={floatUpVariants}
-                    transition={{ duration: 1, delay: 1.0 }}
+                    transition={{ duration: 1 }}
                     onAnimationComplete={() =>
                       setHasAnimated((prev) => ({ ...prev, expButtons: true }))
                     }
@@ -727,7 +727,7 @@ function App() {
                     ref={expDesc}
                     animate={expDescInView ? "visible" : "hidden"}
                     variants={floatUpVariants}
-                    transition={{ duration: 1, delay: 1.0 }}
+                    transition={{ duration: 1 }}
                     onAnimationComplete={() =>
                       setHasAnimated((prev) => ({ ...prev, expDesc: true }))
                     }
