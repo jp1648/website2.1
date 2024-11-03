@@ -1,5 +1,5 @@
 import { React, useRef } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import sgMail from "@sendgrid/mail";
 
 sgMail.setApiKey(import.meta.env.VITE_SENDGRID_API_KEY);
@@ -81,9 +81,19 @@ const ContactForm = ({ formRef }) => {
             name="message"
             style={{ marginBottom: "20px", padding: "10px", height: "100px" }}
           />
-          <button type="submit" style={{ padding: "10px" }}>
+          <Button
+            type="submit"
+            sx={{
+              color: "black",
+              padding: "10px",
+              backgroundColor: "#00fc00",
+              "&:hover": {
+                backgroundColor: "#00cc00",
+              },
+            }}
+          >
             Send
-          </button>
+          </Button>
         </form>
       </Box>
     </Box>

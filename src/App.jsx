@@ -78,8 +78,6 @@ function App() {
       </li>
     </ul>
   );
-  const [buttonsVisible, setButtonsVisible] = useState(false);
-  const [expDescVisible, setExpDescVisible] = useState(false);
 
   const [allVisible, setAllVisible] = useState(false);
 
@@ -313,6 +311,7 @@ function App() {
                       "&:hover": {
                         backgroundColor: "#00cc00",
                       },
+
                       "&:focus": {
                         outline: "none",
                         border: "none",
@@ -560,7 +559,17 @@ function App() {
                 >
                   <Button
                     variant="contained"
-                    color="primary"
+                    sx={{
+                      color: "black",
+                      padding: "10px",
+                      backgroundColor: "#00fc00",
+                      "&:hover": {
+                        backgroundColor: "#00cc00",
+                      },
+                      outline: "none",
+                      border: "none",
+                      boxShadow: "none",
+                    }}
                     onClick={() =>
                       setExperienceText(
                         <ul sx={{ margin: 0, padding: 0, listStyle: "none" }}>
@@ -614,7 +623,17 @@ function App() {
                 >
                   <Button
                     variant="contained"
-                    color="primary"
+                    sx={{
+                      color: "black",
+                      padding: "10px",
+                      backgroundColor: "#00fc00",
+                      "&:hover": {
+                        backgroundColor: "#00cc00",
+                      },
+                      outline: "none",
+                      border: "none",
+                      boxShadow: "none",
+                    }}
                     onClick={() =>
                       setExperienceText(
                         <ul sx={{ margin: 0, padding: 0, listStyle: "none" }}>
