@@ -779,55 +779,7 @@ function App() {
                 setHasAnimated((prev) => ({ ...prev, emailForm: true }))
               }
             >
-              <ContactForm formRef={formRef}>
-                <TextField
-                  variant="outlined"
-                  label="Your Name"
-                  fullWidth
-                  margin="normal"
-                  InputProps={{
-                    style: {
-                      backgroundColor: "gray", // Background color
-                      color: "white", // Text color
-                    },
-                  }}
-                  InputLabelProps={{
-                    style: { color: "#888" }, // Label color
-                  }}
-                />
-                <TextField
-                  variant="outlined"
-                  label="Your Email"
-                  fullWidth
-                  margin="normal"
-                  InputProps={{
-                    style: {
-                      backgroundColor: "gray",
-                      color: "white",
-                    },
-                  }}
-                  InputLabelProps={{
-                    style: { color: "#888" },
-                  }}
-                />
-                <TextField
-                  variant="outlined"
-                  label="Your Message"
-                  fullWidth
-                  margin="normal"
-                  multiline
-                  rows={4}
-                  InputProps={{
-                    style: {
-                      backgroundColor: "gray",
-                      color: "white",
-                    },
-                  }}
-                  InputLabelProps={{
-                    style: { color: "#888" },
-                  }}
-                />
-              </ContactForm>
+              <ContactForm formRef={formRef}></ContactForm>
             </motion.form>
           </Box>
         </Box>

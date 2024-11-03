@@ -81,7 +81,7 @@ const ContactForm = ({ formRef }) => {
             name="message"
             style={{ marginBottom: "20px", padding: "10px", height: "100px" }}
           />
-          <button type="submit" style={{ padding: "10px", cursor: "pointer" }}>
+          <button type="submit" style={{ padding: "10px" }}>
             Send
           </button>
         </form>
