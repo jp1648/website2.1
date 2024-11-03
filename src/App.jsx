@@ -302,24 +302,36 @@ function App() {
                   animate={allVisible || "visible"}
                   variants={floatUpVariants}
                   transition={{ duration: 1, delay: 2 }}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    padding: 0,
+                  }}
                 >
                   <Button
                     variant="contained"
                     color="primary"
                     href="#projects"
                     sx={{
+                      color: "black",
+                      padding: "10px",
+                      backgroundColor: "#00fc00",
+                      width: "100%",
                       "&:hover": {
                         backgroundColor: "#00cc00",
                       },
-
-                      "&:focus": {
-                        outline: "none",
-                        border: "none",
-                        boxShadow: "none",
-                      },
                       outline: "none",
                       border: "none",
-                      boxShadow: "none",
+                      boxShadow: "none !important",
+                      ".MuiButton-root": {
+                        boxShadow: "none !important",
+                      },
+                      "&.MuiButton-contained": {
+                        boxShadow: "none !important",
+                      },
+                      "&.MuiButtonBase-root": {
+                        boxShadow: "none !important",
+                      },
                     }}
                   >
                     View My Work
@@ -552,6 +564,11 @@ function App() {
                   initial="hidden"
                   animate={expButtonsRefInView ? "visible" : "hidden"}
                   variants={floatUpVariants}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    padding: 0,
+                  }}
                   transition={{ duration: 1, delay: 1.0 }} // Delay after description
                   onAnimationComplete={() =>
                     setHasAnimated((prev) => ({ ...prev, expButtons: true }))
@@ -615,6 +632,11 @@ function App() {
                   ref={expButtonsRef}
                   initial="hidden"
                   animate={expButtonsRefInView ? "visible" : "hidden"}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    padding: 0,
+                  }}
                   variants={floatUpVariants}
                   transition={{ duration: 1, delay: 1.0 }}
                   onAnimationComplete={() =>
