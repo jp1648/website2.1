@@ -119,4 +119,22 @@ select {
     padding: 0;
     margin: 0;
   }
+
+  .extended-about-me-text {
+    padding: 10px !important;
+    margin: 0 10px !important;
+  }
+
+  .about-ext-subheader {
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+    padding: 15px !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+  }
+}
+
+.about-ext-subheader {
+  margin: 0 auto;
+  width: 100%;
 }
