@@ -1,16 +1,16 @@
 import React from "react";
 import { Grid, Typography, Box } from "@mui/material";
-import ReactIcon from "../assets/react.png"; // Corrected file path for React icon
-import AngularIcon from "../assets/angular.png"; // Assuming the path is correct
-import CssIcon from "../assets/css.png"; // Corrected file path for SCSS icon
-import JsIcon from "../assets/javascript.png"; // Corrected file path for JavaScript icon
-import TsIcon from "../assets/ts.png"; // Corrected file path for TypeScript icon
-import HtmlIcon from "../assets/html.png"; // Corrected file path for HTML icon
-import NodeIcon from "../assets/node.png"; // Corrected file path for Node.js icon
-import MongoIcon from "../assets/mongodb.png"; // Corrected file path for MongoDB icon
-import PostIcon from "../assets/postgre.png"; // Corrected file path for PostgreSQL icon
-import PythonIcon from "../assets/python.png"; // Corrected file path for Python icon
-import FlaskIcon from "../assets/flask.png"; // Corrected file path for Flask icon
+import ReactIcon from "/assets/react.png";
+import AngularIcon from "/assets/angular.png";
+import CssIcon from "/assets/css.png";
+import JsIcon from "/assets/javascript.png";
+import TsIcon from "/assets/ts.png";
+import HtmlIcon from "/assets/html.png";
+import NodeIcon from "/assets/node.png";
+import MongoIcon from "/assets/mongodb.png";
+import PostIcon from "/assets/postgre.png";
+import PythonIcon from "/assets/python.png";
+import FlaskIcon from "/assets/flask.png";
 
 const technologies = [
   { name: "Javascript", Icon: JsIcon },
