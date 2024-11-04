@@ -52,7 +52,14 @@ function App() {
   const [projects, setProjects] = useState([]);
   const [inViewProjects, setInViewProjects] = useState({});
   const [experienceText, setExperienceText] = useState(
-    <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
+    <ul
+      style={{
+        listStyle: "none",
+        margin: 0,
+        padding: 0,
+        fontSize: window.innerWidth <= 600 ? "12px" : "16px",
+      }}
+    >
       <li>
         <span style={{ color: "white" }}>August 2024 - Current</span>
         <br />
@@ -623,7 +630,13 @@ function App() {
                       onClick={() =>
                         setExperienceText(
                           <ul
-                            style={{ listStyle: "none", margin: 0, padding: 0 }}
+                            style={{
+                              listStyle: "none",
+                              margin: 0,
+                              padding: 0,
+                              fontSize:
+                                window.innerWidth <= 600 ? "12px" : "16px",
+                            }}
                           >
                             <li>
                               <span style={{ color: "white" }}>
@@ -699,7 +712,13 @@ function App() {
                       onClick={() =>
                         setExperienceText(
                           <ul
-                            style={{ listStyle: "none", margin: 0, padding: 0 }}
+                            style={{
+                              listStyle: "none",
+                              margin: 0,
+                              padding: 0,
+                              fontSize:
+                                window.innerWidth <= 600 ? "12px" : "16px",
+                            }}
                           >
                             <li>
                               <span style={{ color: "white" }}>
@@ -756,7 +775,7 @@ function App() {
                       setHasAnimated((prev) => ({ ...prev, expDesc: true }))
                     }
                   >
-                    <Typography component="body">{experienceText}</Typography>
+                    <Typography>{experienceText}</Typography>
                   </motion.p>
                 </Box>
               </Box>
