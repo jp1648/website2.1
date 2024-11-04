@@ -77,9 +77,11 @@ select {
 
   .subheader-text {
     height: auto !important;
+    min-height: 50px !important;
     margin-bottom: 30px;
     font-size: 14px;
     line-height: 1.5;
+    overflow: visible !important;
   }
 
   .view-work-button {

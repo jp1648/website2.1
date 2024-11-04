@@ -261,7 +261,7 @@ function App() {
                 flexDirection: { xs: "column", md: "row" },
                 alignItems: "center",
                 justifyContent: "space-between",
-                marginTop: "150px",
+                marginTop: { xs: "50px", md: "150px" },
                 marginLeft: "20px",
               }}
             >
@@ -309,7 +309,10 @@ function App() {
                       whiteSpace: "normal",
                       maxWidth: "600px",
                       marginTop: "5px",
-                      height: "25px",
+                      height: { xs: "auto", sm: "25px" },
+                      minHeight: { xs: "50px", sm: "25px" },
+                      overflow: "visible",
+                      lineHeight: { xs: 1.5, sm: 1 },
                     }}
                   >
                     I am a software engineer who likes to build cool web
@@ -368,7 +371,7 @@ function App() {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  width: { xs: "30%%", md: "30%", lg: "30%" },
+                  width: { xs: "80%", md: "30%", lg: "30%" },
                   marginTop: "50px",
                 }}
               >
@@ -540,7 +543,9 @@ function App() {
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
-                  height: "600px",
+                  height: "auto",
+                  minHeight: { xs: "700px", sm: "600px", md: "600px" },
+                  position: "relative",
                 }}
               >
                 <Box sx={{ height: "80px", maxWidth: "80%" }}>
@@ -934,7 +939,10 @@ function App() {
                     whiteSpace: "normal",
                     maxWidth: "600px",
                     marginTop: "5px",
-                    height: "25px",
+                    height: { xs: "auto", sm: "25px" },
+                    minHeight: { xs: "50px", sm: "25px" },
+                    overflow: "visible",
+                    lineHeight: { xs: 1.5, sm: 1 },
                   }}
                 >
                   <ReactTyped
@@ -1171,7 +1179,9 @@ function App() {
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
-                  height: "600px",
+                  height: "auto",
+                  minHeight: { xs: "700px", sm: "600px", md: "600px" },
+                  position: "relative",
                 }}
               >
                 <Box sx={{ height: "80px", maxWidth: "80%" }}>

@@ -28,7 +28,7 @@ const technologies = [
 
 const TechnologyGrid = () => {
   return (
-    <Grid container spacing={4} justifyContent="center" sx={{ px: 2 }}>
+    <Grid container spacing={2} justifyContent="center" sx={{ px: 1 }}>
       {technologies.map((tech, index) => (
         <Grid item key={index} xs={4} sm={3} md={2}>
           <Box
@@ -37,14 +37,16 @@ const TechnologyGrid = () => {
               flexDirection: "column",
               alignItems: "center",
               gap: 1,
+              padding: { xs: "4px", sm: "8px" },
+              minHeight: { xs: "90px", sm: "120px" },
             }}
           >
             <img
               src={tech.Icon}
               alt={tech.name}
               style={{
-                width: "48px",
-                height: "48px",
+                width: "40px",
+                height: "40px",
                 objectFit: "contain",
               }}
             />
@@ -54,10 +56,14 @@ const TechnologyGrid = () => {
                 textAlign: "center",
                 color: "white",
                 fontSize: {
-                  xs: "10px", // Mobile devices
-                  sm: "12px", // Tablets
-                  md: "14px", // Desktop
+                  xs: "8px",
+                  sm: "12px",
+                  md: "14px",
                 },
+                wordBreak: "break-word",
+                width: "100%",
+                lineHeight: 1.2,
+                mt: 1,
               }}
             >
               {tech.name}
