@@ -607,14 +607,18 @@ function App() {
                       variant="contained"
                       sx={{
                         color: "black",
-                        padding: "10px",
+                        padding: { xs: "8px", sm: "10px" },
                         backgroundColor: "#00fc00",
+                        fontSize: { xs: "10px", sm: "12px", md: "14px" },
+                        width: { xs: "200px", sm: "auto" },
+                        minWidth: { xs: "150px", sm: "200px" },
                         "&:hover": {
                           backgroundColor: "#00cc00",
                         },
                         outline: "none",
                         border: "none",
                         boxShadow: "none",
+                        whiteSpace: "nowrap",
                       }}
                       onClick={() =>
                         setExperienceText(
@@ -677,14 +681,18 @@ function App() {
                       variant="contained"
                       sx={{
                         color: "black",
-                        padding: "10px",
+                        padding: { xs: "8px", sm: "10px" },
                         backgroundColor: "#00fc00",
+                        fontSize: { xs: "10px", sm: "12px", md: "14px" },
+                        width: { xs: "200px", sm: "auto" },
+                        minWidth: { xs: "150px", sm: "200px" },
                         "&:hover": {
                           backgroundColor: "#00cc00",
                         },
                         outline: "none",
                         border: "none",
                         boxShadow: "none",
+                        whiteSpace: "nowrap",
                       }}
                       onClick={() =>
                         setExperienceText(
@@ -725,8 +733,12 @@ function App() {
 
                 <Box
                   sx={{
-                    marginTop: "30px",
-                    marginBottom: "150px",
+                    marginTop: { xs: "30px", sm: "40px" },
+                    marginBottom: { xs: "50px", sm: "150px" },
+                    position: "relative",
+                    zIndex: 0,
+                    width: "100%",
+                    padding: "0 20px",
                   }}
                   className="experience-p"
                 >
@@ -1243,14 +1255,18 @@ function App() {
                       variant="contained"
                       sx={{
                         color: "black",
-                        padding: "10px",
+                        padding: { xs: "8px", sm: "10px" },
                         backgroundColor: "#00fc00",
+                        fontSize: { xs: "10px", sm: "12px", md: "14px" },
+                        width: { xs: "200px", sm: "auto" },
+                        minWidth: { xs: "150px", sm: "200px" },
                         "&:hover": {
                           backgroundColor: "#00cc00",
                         },
                         outline: "none",
                         border: "none",
                         boxShadow: "none",
+                        whiteSpace: "nowrap",
                       }}
                       onClick={() =>
                         setExperienceText(
@@ -1313,14 +1329,18 @@ function App() {
                       variant="contained"
                       sx={{
                         color: "black",
-                        padding: "10px",
+                        padding: { xs: "8px", sm: "10px" },
                         backgroundColor: "#00fc00",
+                        fontSize: { xs: "10px", sm: "12px", md: "14px" },
+                        width: { xs: "200px", sm: "auto" },
+                        minWidth: { xs: "150px", sm: "200px" },
                         "&:hover": {
                           backgroundColor: "#00cc00",
                         },
                         outline: "none",
                         border: "none",
                         boxShadow: "none",
+                        whiteSpace: "nowrap",
                       }}
                       onClick={() =>
                         setExperienceText(
@@ -1361,8 +1381,12 @@ function App() {
 
                 <Box
                   sx={{
-                    marginTop: "30px",
-                    marginBottom: "150px",
+                    marginTop: { xs: "30px", sm: "40px" },
+                    marginBottom: { xs: "50px", sm: "150px" },
+                    position: "relative",
+                    zIndex: 0,
+                    width: "100%",
+                    padding: "0 20px",
                   }}
                   className="experience-p"
                 >
