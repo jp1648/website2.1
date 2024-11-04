@@ -205,7 +205,7 @@ function App() {
 
   const [extendedAboutMeP, extendedAboutMePInView] = useInView({
     triggerOnce: true,
-    threshold: 0.8,
+    threshold: isMobile ? 0.1 : 0.8,
   });
 
   const [experienceDescRef, experienceDescInView] = useInView({
