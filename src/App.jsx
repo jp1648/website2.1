@@ -225,6 +225,24 @@ function App() {
 
   const formRef = useRef();
 
+  useEffect(() => {
+    const handleResize = () => {
+      // Re-render the current experience text with updated font size
+      setExperienceText((prev) => {
+        // Preserve the current content but update the style
+        return React.cloneElement(prev, {
+          style: {
+            ...prev.props.style,
+            fontSize: window.innerWidth <= 600 ? "12px" : "16px",
+          },
+        });
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       {isMobile ? (
@@ -1294,7 +1312,13 @@ function App() {
                       onClick={() =>
                         setExperienceText(
                           <ul
-                            style={{ listStyle: "none", margin: 0, padding: 0 }}
+                            style={{
+                              listStyle: "none",
+                              margin: 0,
+                              padding: 0,
+                              fontSize:
+                                window.innerWidth <= 600 ? "12px" : "16px",
+                            }}
                           >
                             <li>
                               <span style={{ color: "white" }}>
@@ -1370,7 +1394,13 @@ function App() {
                       onClick={() =>
                         setExperienceText(
                           <ul
-                            style={{ listStyle: "none", margin: 0, padding: 0 }}
+                            style={{
+                              listStyle: "none",
+                              margin: 0,
+                              padding: 0,
+                              fontSize:
+                                window.innerWidth <= 600 ? "12px" : "16px",
+                            }}
                           >
                             <li>
                               <span style={{ color: "white" }}>
