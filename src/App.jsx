@@ -52,7 +52,7 @@ function App() {
   const [projects, setProjects] = useState([]);
   const [inViewProjects, setInViewProjects] = useState({});
   const [experienceText, setExperienceText] = useState(
-    <ul>
+    <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
       <li>
         <span style={{ color: "white" }}>August 2024 - Current</span>
         <br />
@@ -622,7 +622,9 @@ function App() {
                       }}
                       onClick={() =>
                         setExperienceText(
-                          <ul sx={{ margin: 0, padding: 0, listStyle: "none" }}>
+                          <ul
+                            style={{ listStyle: "none", margin: 0, padding: 0 }}
+                          >
                             <li>
                               <span style={{ color: "white" }}>
                                 August 2024 - Current
@@ -696,7 +698,9 @@ function App() {
                       }}
                       onClick={() =>
                         setExperienceText(
-                          <ul sx={{ margin: 0, padding: 0, listStyle: "none" }}>
+                          <ul
+                            style={{ listStyle: "none", margin: 0, padding: 0 }}
+                          >
                             <li>
                               <span style={{ color: "white" }}>
                                 January 2023 - August 2024
@@ -1270,7 +1274,9 @@ function App() {
                       }}
                       onClick={() =>
                         setExperienceText(
-                          <ul sx={{ margin: 0, padding: 0, listStyle: "none" }}>
+                          <ul
+                            style={{ listStyle: "none", margin: 0, padding: 0 }}
+                          >
                             <li>
                               <span style={{ color: "white" }}>
                                 August 2024 - Current
@@ -1344,7 +1350,9 @@ function App() {
                       }}
                       onClick={() =>
                         setExperienceText(
-                          <ul sx={{ margin: 0, padding: 0, listStyle: "none" }}>
+                          <ul
+                            style={{ listStyle: "none", margin: 0, padding: 0 }}
+                          >
                             <li>
                               <span style={{ color: "white" }}>
                                 January 2023 - August 2024
@@ -1400,7 +1408,7 @@ function App() {
                       setHasAnimated((prev) => ({ ...prev, expDesc: true }))
                     }
                   >
-                    <Typography component="body">{experienceText}</Typography>
+                    <Typography>{experienceText}</Typography>
                   </motion.p>
                 </Box>
               </Box>
