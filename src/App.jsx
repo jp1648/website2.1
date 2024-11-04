@@ -860,12 +860,29 @@ function App() {
                       className="about-ext-subheader"
                       sx={{
                         textAlign: "justify",
-                        lineHeight: "1.8",
-                        fontSize: { xs: "14px", sm: "16px" },
-                        padding: "10px",
-                        wordSpacing: "2px",
+                        lineHeight: {
+                          xs: "1.4",
+                          sm: "1.8",
+                        },
+                        fontSize: {
+                          xs: "12px",
+                          sm: "14px",
+                          md: "16px",
+                        },
+                        padding: {
+                          xs: "5px",
+                          sm: "10px",
+                        },
+                        wordSpacing: {
+                          xs: "1px",
+                          sm: "2px",
+                        },
                         textJustify: "inter-word",
                         margin: "0 auto",
+                        maxWidth: {
+                          xs: "95%",
+                          sm: "90%",
+                        },
                       }}
                     >
                       Hi! As you know by now, my name is Jay Patel and I am a
@@ -1524,12 +1541,29 @@ function App() {
                       className="about-ext-subheader"
                       sx={{
                         textAlign: "justify",
-                        lineHeight: "1.8",
-                        fontSize: { xs: "14px", sm: "16px" },
-                        padding: "10px",
-                        wordSpacing: "2px",
+                        lineHeight: {
+                          xs: "1.4",
+                          sm: "1.8",
+                        },
+                        fontSize: {
+                          xs: "12px",
+                          sm: "14px",
+                          md: "16px",
+                        },
+                        padding: {
+                          xs: "5px",
+                          sm: "10px",
+                        },
+                        wordSpacing: {
+                          xs: "1px",
+                          sm: "2px",
+                        },
                         textJustify: "inter-word",
                         margin: "0 auto",
+                        maxWidth: {
+                          xs: "95%",
+                          sm: "90%",
+                        },
                       }}
                     >
                       Hi! As you know by now, my name is Jay Patel and I am a
