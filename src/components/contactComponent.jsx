@@ -1,50 +1,17 @@
-import { React, useRef } from "react";
-import { Box, Button, Typography } from "@mui/material";
-import sgMail from "@sendgrid/mail";
-
-sgMail.setApiKey(import.meta.env.VITE_SENDGRID_API_KEY);
-
-const SendMail = async (msg) => {
-  // Accept msg as a parameter
-  try {
-    let x = await sgMail.send(msg);
-    return x;
-  } catch (error) {
-    console.error("Error sending email:", error); // Log the error for debugging
-    return null;
-  }
-};
+import React from "react";
+import { useForm, ValidationError } from "@formspree/react";
+import { Box, Typography, Button } from "@mui/material";
 
 const ContactForm = ({ formRef }) => {
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
+  const [state, handleSubmit] = useForm("xkgnjejj");
 
-    const formData = new FormData(formRef.current);
-    const name = formData.get("user_name");
-    const email = formData.get("user_email");
-    const message = formData.get("message");
-
-    const msg = {
-      to: "jaypat0885@gmail.com",
-      from: email,
-      subject: `Message from ${name}`, // Add a subject line
-      text: message,
-      html: `<strong>${message}</strong>`,
-    };
-
-    try {
-      const result = await SendMail(msg);
-      if (result) {
-        alert("Email sent successfully!");
-      } else {
-        alert("Failed to send email.");
-      }
-      console.log(result);
-    } catch (error) {
-      console.error("Error in form submission:", error); // Correctly log the error
-      alert("Failed to send email.");
-    }
-  };
+  if (state.succeeded) {
+    return (
+      <Typography sx={{ color: "lime", marginTop: "20px" }}>
+        Thank you for your message!
+      </Typography>
+    );
+  }
 
   return (
     <Box className="contact" sx={{ marginTop: "100px", textAlign: "center" }}>
@@ -61,7 +28,9 @@ const ContactForm = ({ formRef }) => {
       >
         <form
           ref={formRef}
-          onSubmit={handleFormSubmit}
+          action="https://formspree.io/f/xkgnjejj"
+          method="POST"
+          onSubmit={handleSubmit}
           style={{ display: "flex", flexDirection: "column", width: "300px" }}
         >
           <label style={{ color: "lime", marginBottom: "10px" }}>Name</label>
@@ -69,20 +38,42 @@ const ContactForm = ({ formRef }) => {
             type="text"
             name="user_name"
             style={{ marginBottom: "20px", padding: "10px" }}
+            required
           />
+          <ValidationError
+            field="user_name"
+            prefix="Name"
+            errors={state.errors}
+          />
+
           <label style={{ color: "lime", marginBottom: "10px" }}>Email</label>
           <input
             type="email"
             name="user_email"
             style={{ marginBottom: "20px", padding: "10px" }}
+            required
           />
+          <ValidationError
+            field="user_email"
+            prefix="Email"
+            errors={state.errors}
+          />
+
           <label style={{ color: "lime", marginBottom: "10px" }}>Message</label>
           <textarea
             name="message"
             style={{ marginBottom: "20px", padding: "10px", height: "100px" }}
+            required
           />
+          <ValidationError
+            field="message"
+            prefix="Message"
+            errors={state.errors}
+          />
+
           <Button
             type="submit"
+            disabled={state.submitting}
             sx={{
               color: "black",
               padding: "10px",
@@ -92,7 +83,7 @@ const ContactForm = ({ formRef }) => {
               },
             }}
           >
-            Send
+            {state.submitting ? "Sending..." : "Send"}
           </Button>
         </form>
       </Box>

@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@cursorify/react": "^0.0.39",
+    "@emailjs/browser": "^4.4.1",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
+    "@formspree/react": "^2.5.1",
     "@mui/icons-material": "^6.1.1",
     "@mui/material": "^6.1.1",
     "@react-spring/web": "^9.7.4",
