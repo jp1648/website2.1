@@ -310,6 +310,8 @@ function App() {
                   flexDirection: "column",
                   alignItems: { xs: "center", md: "flex-start" },
                   textAlign: { xs: "center", md: "left" },
+                  gap: { xs: "20px", sm: "30px" },
+                  minHeight: { xs: "200px", sm: "250px" },
                 }}
               >
                 <motion.h2
@@ -343,10 +345,10 @@ function App() {
                       whiteSpace: "normal",
                       maxWidth: "600px",
                       marginTop: "5px",
-                      height: { xs: "auto", sm: "25px" },
-                      minHeight: { xs: "50px", sm: "25px" },
+                      height: { xs: "auto", md: "25px" },
+                      minHeight: { xs: "50px", sm: "60px" },
                       overflow: "visible",
-                      lineHeight: { xs: 1.5, sm: 1 },
+                      lineHeight: { xs: 1.5, sm: 1.5 },
                     }}
                   >
                     I am a software engineer who likes to build cool web
@@ -999,6 +1001,8 @@ function App() {
                   flexDirection: "column",
                   alignItems: { xs: "center", md: "flex-start" },
                   textAlign: { xs: "center", md: "left" },
+                  gap: { xs: "20px", sm: "30px" },
+                  minHeight: { xs: "200px", sm: "250px" },
                 }}
               >
                 <motion.h2
@@ -1023,10 +1027,10 @@ function App() {
                     whiteSpace: "normal",
                     maxWidth: "600px",
                     marginTop: "5px",
-                    height: { xs: "auto", sm: "25px" },
-                    minHeight: { xs: "50px", sm: "25px" },
+                    height: { xs: "auto", md: "25px" },
+                    minHeight: { xs: "50px", sm: "60px" },
                     overflow: "visible",
-                    lineHeight: { xs: 1.5, sm: 1 },
+                    lineHeight: { xs: 1.5, sm: 1.5 },
                   }}
                 >
                   <ReactTyped
