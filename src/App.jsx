@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo, createRef } from "react";
+import React, { useState, useEffect, useRef, useMemo, createRef, cloneElement } from "react";
 import "./App.css";
 import { ReactTyped } from "react-typed";
 import { Container, Typography, Box, Button, TextField } from "@mui/material";
@@ -116,7 +116,10 @@ function App() {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768); // Adjust breakpoint as needed
+      const isMobileDevice = window.innerWidth <= 768;
+      if (isMobile !== isMobileDevice) {
+        setIsMobile(isMobileDevice);
+      }
     };
 
     // Check initially
@@ -127,7 +130,7 @@ function App() {
 
     // Cleanup
     return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+  }, [isMobile]);
 
   const refsById = useMemo(() => {
     const refs = {};
@@ -227,9 +230,7 @@ function App() {
 
   useEffect(() => {
     const handleResize = () => {
-      // Re-render the current experience text with updated font size
       setExperienceText((prev) => {
-        // Preserve the current content but update the style
         return React.cloneElement(prev, {
           style: {
             ...prev.props.style,
