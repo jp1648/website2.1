@@ -584,7 +584,7 @@ function App() {
                   flexDirection: "column",
                   alignItems: "center",
                   height: "auto",
-                  minHeight: { xs: "700px", sm: "600px", md: "600px" },
+                  minHeight: { xs: "800px", sm: "700px", md: "600px" },
                   position: "relative",
                 }}
               >
@@ -623,9 +623,13 @@ function App() {
                     display: "flex",
                     flexDirection: { xs: "column", sm: "row" },
                     justifyContent: "space-evenly",
-                    marginTop: "20px",
+                    marginTop: {
+                      xs: "30px", // mobile (<600px)
+                      sm: "60px", // tablet (600px-900px)
+                      md: "30px", // laptop (>900px) - lowered from 40px to 30px
+                    },
                     width: "75%",
-                    gap: { xs: "20px", sm: "0" }, // Add gap for vertical spacing on mobile
+                    gap: { xs: "20px", sm: "0" },
                   }}
                   className="tabs"
                 >
@@ -1272,7 +1276,7 @@ function App() {
                   flexDirection: "column",
                   alignItems: "center",
                   height: "auto",
-                  minHeight: { xs: "700px", sm: "600px", md: "600px" },
+                  minHeight: { xs: "800px", sm: "700px", md: "600px" },
                   position: "relative",
                 }}
               >
@@ -1311,9 +1315,13 @@ function App() {
                     display: "flex",
                     flexDirection: { xs: "column", sm: "row" },
                     justifyContent: "space-evenly",
-                    marginTop: "20px",
+                    marginTop: {
+                      xs: "30px", // mobile (<600px)
+                      sm: "60px", // tablet (600px-900px)
+                      md: "30px", // laptop (>900px) - lowered from 40px to 30px
+                    },
                     width: "75%",
-                    gap: { xs: "20px", sm: "0" }, // Add gap for vertical spacing on mobile
+                    gap: { xs: "20px", sm: "0" },
                   }}
                   className="tabs"
                 >
