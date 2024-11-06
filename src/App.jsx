@@ -23,10 +23,10 @@ import ContactForm from "./components/contactComponent.jsx";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#00fc00", // Set the primary color
+      main: "#00fc00",
     },
     secondary: {
-      main: "#00fc00", // Set the secondary color
+      main: "#00fc00",
     },
   },
   typography: {
