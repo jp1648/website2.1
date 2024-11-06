@@ -23,12 +23,29 @@ const CustomComponent = ({ title, description, linkUrl, isRight = false }) => {
         marginRight: isRight ? { xs: "auto", sm: -1 } : "auto",
       }}
     >
-      <Link href={linkUrl} target="_blank" sx={{ color: "black" }}>
+      <Link 
+        href={linkUrl} 
+        target="_blank" 
+        underline="none"
+        sx={{ 
+          color: "black",
+          display: "inline-block",
+          "&:hover": {
+            "& .project-title": {
+              borderBottom: "2px solid black",
+            }
+          }
+        }}
+      >
         <Typography
           variant="h5"
+          className="project-title"
           sx={{
             fontSize: { xs: "16px", sm: "24px" },
             marginBottom: 1,
+            transition: "border-bottom 0.1s ease-in-out",
+            borderBottom: "2px solid transparent",
+            display: "inline-block",
           }}
         >
           {title}
