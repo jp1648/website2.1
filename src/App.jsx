@@ -1,4 +1,11 @@
-import React, { useState, useEffect, useRef, useMemo, createRef, cloneElement } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useMemo,
+  createRef,
+  cloneElement,
+} from "react";
 import "./App.css";
 import { ReactTyped } from "react-typed";
 import { Container, Typography, Box, Button, TextField } from "@mui/material";
@@ -145,17 +152,18 @@ function App() {
       (entries) => {
         entries.forEach((entry) => {
           const { id } = entry.target.dataset;
-
-          // Only set to true the first time it becomes visible
           if (entry.isIntersecting) {
             setInViewProjects((prev) => ({
               ...prev,
-              [id]: true, // Mark the project as viewed
+              [id]: true,
             }));
           }
         });
       },
-      { threshold: 0.75 }
+      {
+        threshold: isMobile ? 0.1 : 0.75,
+        rootMargin: "50px",
+      }
     );
 
     Object.values(refsById).forEach((ref) => {
@@ -171,7 +179,7 @@ function App() {
         }
       });
     };
-  }, [refsById]);
+  }, [refsById, isMobile]);
 
   const [techStackTitleRef, techStackTitleInView] = useInView({
     triggerOnce: true,
@@ -489,6 +497,10 @@ function App() {
                 sx={{
                   textAlign: "center",
                   overflow: "visible",
+                  minHeight: { xs: "200px" },
+                  visibility: "visible",
+                  position: "relative",
+                  zIndex: 1,
                 }}
               >
                 {projects.map((project, index) => {
@@ -611,6 +623,7 @@ function App() {
                     justifyContent: "space-evenly",
                     marginTop: "20px",
                     width: "75%",
+                    gap: { xs: "20px", sm: "0" }, // Add gap for vertical spacing on mobile
                   }}
                   className="tabs"
                 >
@@ -1170,6 +1183,10 @@ function App() {
                 sx={{
                   textAlign: "center",
                   overflow: "visible",
+                  minHeight: { xs: "200px" },
+                  visibility: "visible",
+                  position: "relative",
+                  zIndex: 1,
                 }}
               >
                 {projects.map((project, index) => {
@@ -1292,6 +1309,7 @@ function App() {
                     justifyContent: "space-evenly",
                     marginTop: "20px",
                     width: "75%",
+                    gap: { xs: "20px", sm: "0" }, // Add gap for vertical spacing on mobile
                   }}
                   className="tabs"
                 >
