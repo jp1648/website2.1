@@ -1,1 +1,1 @@
-My newly designed portfolio. Odds are, you are looking at it now xD. 
+My newly designed portfolio. Odds are, you are came from it 😄
