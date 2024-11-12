@@ -763,7 +763,7 @@ function App() {
                                 January 2023 - August 2024
                               </span>
                               <br />
-                              Master of Science in Computer Science | Stevens
+                              Master of Science in Computer Science @ Stevens
                               Institute of Technology
                             </li>
                             <br />
@@ -772,7 +772,7 @@ function App() {
                                 September 2018 - May 2022
                               </span>
                               <br />
-                              Business Analytics & Information Technology |
+                              Business Analytics & Information Technology @
                               Rutgers University - New Brunswick
                             </li>
                             <br />
@@ -781,7 +781,7 @@ function App() {
                                 September 2018 - May 2022
                               </span>
                               <br />
-                              Finance | Rutgers University - New Brunswick
+                              Finance @ Rutgers University - New Brunswick
                             </li>
                           </ul>
                         )
